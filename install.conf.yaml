@@ -1,0 +1,9 @@
+- clean: ['~']
+
+- link:
+    ~/.vim: vim/
+    ~/.zplug: zplug/
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc
+    ~/.zprofile: zprofile
+    ~/.zshenv: zshenv
