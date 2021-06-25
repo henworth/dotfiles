@@ -16,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'arcticicestudio/nord-vim'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -44,6 +43,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " let g:airline_solarized_bg='dark'
-" let g:airline_theme='dracula'
 " let g:airline_theme='nord'
+
 colorscheme nord
