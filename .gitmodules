@@ -54,3 +54,7 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	ignore = dirty
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
+	ignore = dirty
