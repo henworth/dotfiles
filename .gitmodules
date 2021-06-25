@@ -29,12 +29,16 @@
 [submodule "tpm"]
 	path = tpm
 	url = https://github.com/tmux-plugins/tpm
+	ignore = dirty
 [submodule "nord-dircolors"]
 	path = nord-dircolors
 	url = https://github.com/arcticicestudio/nord-dircolors
+	ignore = dirty
 [submodule "vim/bundle/nord-vim"]
 	path = vim/bundle/nord-vim
 	url = https://github.com/arcticicestudio/nord-vim
+	ignore = dirty
 [submodule "tmux/plugins/tmux-continuum"]
 	path = tmux/plugins/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
+	ignore = dirty
