@@ -93,6 +93,7 @@ eval "$(register-python-argcomplete pipx)"
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 alias ls='ls --color=auto'
+alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
