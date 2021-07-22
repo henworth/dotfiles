@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.iterm: iterm
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.tmux: tmux
     ~/.vim: vim

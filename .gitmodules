@@ -58,3 +58,9 @@
 	path = tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
 	ignore = dirty
+[submodule "tmux/plugins/nord-tmux"]
+	path = tmux/plugins/nord-tmux
+	url = https://github.com/arcticicestudio/nord-tmux.git
+[submodule "tmux/plugins/tmux-prefix-highlight"]
+	path = tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
