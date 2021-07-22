@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+syntax on
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -13,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive', {'pinned': 1}
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'arcticicestudio/nord-vim'
@@ -44,5 +45,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " let g:airline_solarized_bg='dark'
 " let g:airline_theme='nord'
+let g:airline_powerline_fonts = 1
+set backspace=indent,eol,start
+
 
 colorscheme nord
