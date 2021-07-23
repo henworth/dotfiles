@@ -1,0 +1,37 @@
+cask_args appdir: '/Applications'
+
+tap 'homebrew/cask'
+
+tap 'homebrew/core'
+tap 'homebrew/services'
+
+# Packages
+brew 'bat'
+brew 'coreutils'
+brew 'exa'
+brew 'fzf'
+brew 'git'
+brew 'gnupg'
+brew 'htop'
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+brew 'terraform'
+brew 'tmux'
+brew 'tree'
+brew 'wget'
+brew 'xz'
+brew 'z'
+
+# Casks
+#cask 'alfred'
+#cask 'iterm2'
+cask 'rectangle'
+cask 'sourcetree'
+#cask '1password'
+cask 'slack'
+cask 'docker'
+cask 'zoom'
+cask 'krisp'
+cask 'bartender'
+cask 'istat-menus'
+cask 'powershell'
