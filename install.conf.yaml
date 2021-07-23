@@ -6,7 +6,7 @@
 
 - link:
     ~/.iterm: iterm
-    ~/.dir_colors: nord-dircolors/src/dir_colors
+    ~/.dircolors: nord-dircolors/src/dir_colors
     ~/.tmux: tmux
     ~/.vim: vim
     ~/.zplug: zplug
