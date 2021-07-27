@@ -1,7 +1,6 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/cask'
-
 tap 'homebrew/core'
 tap 'homebrew/services'
 
@@ -35,3 +34,4 @@ cask 'krisp'
 cask 'bartender'
 cask 'istat-menus'
 cask 'powershell'
+cask 'microsoft-edge'
