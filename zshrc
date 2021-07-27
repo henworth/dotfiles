@@ -62,6 +62,7 @@ fi
 #export PATH="$HOME/.rbenv/bin:$PYENV_ROOT/bin:$PATH:$GOROOT/bin:$HOME/.local/bin"
 
 export ENHANCD_DISABLE_HOME=1
+export BAT_THEME=Nord
 
 #if command -v pyenv 1>/dev/null 2>&1; then
 #  eval "$(pyenv init -)"
@@ -87,10 +88,13 @@ export ENHANCD_DISABLE_HOME=1
 #eval "$(register-python-argcomplete pipx)"
 
 if [[ `uname` == "Darwin" ]]; then
-  # alias ls="gls --color=auto"
   alias ls="exa"
+  alias cat="bat"
+  alias less="bat"
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  export LESSOPEN="| src-hilite-lesspipe.sh %s"
+  export LESS=' -R '
   test -e "${HOME}/.dircolors" && eval $(dircolors -b "${HOME}/.dircolors")
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 else
