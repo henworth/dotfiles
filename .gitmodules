@@ -2,10 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "zplug"]
-	path = zplug
-	url = https://github.com/zplug/zplug
-	ignore = dirty
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
@@ -64,3 +60,7 @@
 [submodule "tmux/plugins/tmux-prefix-highlight"]
 	path = tmux/plugins/tmux-prefix-highlight
 	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+[submodule "zinit"]
+	path = zinit
+	url = https://github.com/zdharma/zinit.git
+	ignore = dirty
