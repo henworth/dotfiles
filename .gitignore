@@ -1,3 +1,4 @@
 *.swp
 tmux/resurrect
 Brewfile.lock.json
+vim/.*
