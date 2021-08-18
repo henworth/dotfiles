@@ -2,6 +2,11 @@ source ~/.zinit/zinit.zsh
 
 zinit ice depth"1" lucid; zinit light romkatv/powerlevel10k
 
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
+  blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions
+
 zinit wait lucid for \
   OMZP::ssh-agent \
   PZTM::environment \
@@ -21,26 +26,28 @@ zinit wait svn lucid for \
   OMZP::git \
   OMZP::gitfast \
   OMZP::osx \
-  PZTM::docker \
+  OMZP::terraform \
   as"null" PZTM::archive
 
-zinit wait"0c" lucid light-mode for \
-  atinit"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
-  blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions
+#PZTM::docker \
 
-zinit ice as"completion" lucid; zinit snippet OMZP::docker/_docker
+#zinit ice svn pick"completion.zsh" src"git.zsh"; zinit snippet OMZ::lib
+
+zinit ice lucid nocompile wait'0e' nocompletions
+zinit load MenkeTechnologies/zsh-more-completions
+
+#zinit ice as"completion" lucid; zinit snippet OMZP::docker/_docker
 zinit ice use"init.sh"; zinit load b4b4r07/enhancd
 
 zstyle ":omz:plugins:ssh-agent" identities id_ed25519 id_rsa
 zstyle ":omz:plugins:ssh-agent" ssh-add-args -K
 zstyle ":omz:plugins:ssh-agent" agent-forwarding on
 zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
-zstyle ':completion:*:*:git:*' script ~/.zinit/snippets/OMZP::gitfast/git-completion.bash
-# zstyle ":prezto:module:terminal" auto-title "yes"
-# zstyle ":prezto:module:terminal:window-title" format "%n@%m: %s"
-# zstyle ":prezto:module:terminal:tab-title" format "%m: %s"
-# zstyle ":prezto:module:terminal:multiplexer-title" format "%s"
+#zstyle ':completion:*:*:git:*' script ~/.zinit/snippets/OMZP::gitfast/git-completion.bash
+zstyle ":prezto:module:terminal" auto-title "yes"
+zstyle ":prezto:module:terminal:window-title" format "%n@%m: %s"
+zstyle ":prezto:module:terminal:tab-title" format "%m: %s"
+zstyle ":prezto:module:terminal:multiplexer-title" format "%s"
 
 # zstyle ":prezto:module:ssh:load" identities id_ed25519
 # zstyle ":prezto:*:*" color "yes"
@@ -89,7 +96,7 @@ export BAT_THEME=Nord
 #eval "$(register-python-argcomplete pipx)"
 
 if [[ `uname` == "Darwin" ]]; then
-  alias ls="exa"
+  alias ls="exa --git"
   alias cat="bat"
   alias less="bat"
   PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
