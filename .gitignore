@@ -2,3 +2,6 @@
 tmux/resurrect
 Brewfile.lock.json
 vim/.*
+gnupg/*
+
+!gnupg/gpg-agent.conf
