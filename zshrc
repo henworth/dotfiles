@@ -1,9 +1,76 @@
 source ~/.zinit/zinit.zsh
 
+zinit light-mode for zdharma-continuum/zinit-annex-bin-gem-node
+zinit light zdharma-continuum/zinit-annex-patch-dl
+
+case "$OSTYPE" in
+  linux*) bpick='*((#s)|/)*(linux|musl)*((#e)|/)*' ;;
+  darwin*) bpick='*(macos|darwin)*' ;;
+  *) echo 'WARN: unsupported system -- some cli programs might not work' ;;
+esac
+
 zinit ice depth"1" lucid; zinit light romkatv/powerlevel10k
 
+zinit for \
+    from'gh-r' \
+    sbin'**/delta -> delta' \
+  dandavison/delta
+
+zinit for \
+    from'gh-r' \
+    sbin'**/exa -> exa' \
+    atclone'cp -vf completions/exa.zsh _exa' \
+  ogham/exa
+
+zinit for \
+    as'command' \
+    from'gh-r' \
+    sbin'**/fd -> fd' \
+  @sharkdp/fd
+
+zinit for \
+  vladdoster/gitfast-zsh-plugin \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+  id-as'junegunn/fzf' nocompile pick'/dev/null' sbin'fzf' src'key-bindings.zsh' \
+  from'gh-r' atclone'mkdir -p $ZPFX/{bin,man/man1}' atpull'%atclone' \
+  dl'
+      https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh -> _fzf_completion;
+      https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh -> key-bindings.zsh;
+      https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf-tmux.1 -> $ZPFX/man/man1/fzf-tmux.1;
+      https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 -> $ZPFX/man/man1/fzf.1' \
+  @junegunn/fzf \
+  OMZP::fzf
+
+zinit for \
+    as'command' \
+    from'gh-r' \
+    sbin'glow' \
+  charmbracelet/glow
+
+zinit for \
+    as'command' \
+    from'gh-r' \
+    sbin'grex' \
+  pemistahl/grex
+
+zinit for \
+    as'null' \
+    atclone'%atpull' \
+    atpull'
+      ./bin/brew update --preinstall \
+      && ln -sf $PWD/completions/zsh/_brew $ZINIT[COMPLETIONS_DIR] \
+      && rm -f brew.zsh \
+      && ./bin/brew shellenv --dummy-arg > brew.zsh \
+      && zcompile brew.zsh' \
+    depth'3' \
+    nocompletions \
+    sbin'bin/brew' \
+    src'brew.zsh' \
+  Homebrew/brew
+
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
+  atinit"zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
   blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions
 
@@ -17,7 +84,7 @@ zinit wait lucid for \
   PZTM::tmux \
   PZTM::python \
   PZTM::ruby \
-  zdharma/history-search-multi-word
+  zdharma-continuum/history-search-multi-word
 
 # OMZP::pipenv \
 # OMZP::pyenv
@@ -25,7 +92,7 @@ zinit wait lucid for \
 zinit wait svn lucid for \
   OMZP::git \
   OMZP::gitfast \
-  OMZP::osx \
+  OMZP::macos \
   OMZP::terraform \
   as"null" PZTM::archive
 
@@ -40,7 +107,7 @@ zinit load MenkeTechnologies/zsh-more-completions
 zinit ice use"init.sh"; zinit load b4b4r07/enhancd
 
 zstyle ":omz:plugins:ssh-agent" identities id_ed25519 id_rsa
-zstyle ":omz:plugins:ssh-agent" ssh-add-args -K
+zstyle ":omz:plugins:ssh-agent" ssh-add-args --apple-use-keychain
 zstyle ":omz:plugins:ssh-agent" agent-forwarding on
 zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
 #zstyle ':completion:*:*:git:*' script ~/.zinit/snippets/OMZP::gitfast/git-completion.bash
@@ -95,12 +162,14 @@ export BAT_THEME=Nord
 #bashcompinit
 #eval "$(register-python-argcomplete pipx)"
 
+PATH="${HOME}/bin:${HOME}/go/bin:${PATH}"
+
 if [[ `uname` == "Darwin" ]]; then
   alias ls="exa --git"
   alias cat="bat"
   alias less="bat"
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
   export LESSOPEN="| src-hilite-lesspipe.sh %s"
   export LESS=' -R '
   test -e "${HOME}/.dircolors" && eval $(dircolors -b "${HOME}/.dircolors")
@@ -111,6 +180,7 @@ else
 fi
 
 # alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
+alias tf="terraform"
 
 # Use emacs key bindings
 bindkey -e
@@ -212,6 +282,26 @@ bindkey '\C-x\C-e' edit-command-line
 
 # file rename magick
 bindkey "^[m" copy-prev-shell-word
+
+load-tfswitch() {
+  local tfswitchrc_path=".terraform-version"
+
+  if [ -f "$tfswitchrc_path" ]; then
+    tfswitch
+  fi
+}
+add-zsh-hook chpwd load-tfswitch
+load-tfswitch
+
+load-tgswitch() {
+  local tgswitchrc_path=".terragrunt-version"
+
+  if [ -f "$tgswitchrc_path" ]; then
+    tgswitch
+  fi
+}
+add-zsh-hook chpwd load-tgswitch
+load-tgswitch
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
