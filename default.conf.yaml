@@ -18,6 +18,7 @@
     ~/.zshrc: zshrc
     ~/.zprofile: zprofile
     ~/.zshenv: zshenv
+    ~/.keybindings.zsh: keybindings.zsh
     ~/.gnupg: gnupg
     ~/.tfenv: tfenv
 
