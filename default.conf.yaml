@@ -1,0 +1,25 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- create:
+    - ~/bin
+
+- link:
+    ~/.dircolors: nord-dircolors/src/dir_colors
+    ~/.tmux: tmux
+    ~/.vim: vim
+    ~/.zinit: zinit
+    ~/.p10k.zsh: p10k.zsh
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc
+    ~/.zprofile: zprofile
+    ~/.zshenv: zshenv
+    ~/.gnupg: gnupg
+    ~/.tfenv: tfenv
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

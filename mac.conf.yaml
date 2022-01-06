@@ -1,0 +1,22 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- create:
+    - ~/.iterm2/bin
+
+- link:
+    ~/.iterm2/config: iterm2/config
+    ~/.iterm2_shell_integration.zsh: iterm2/shell_integration.zsh
+
+- shell:
+    - command: sh homebrew/install.sh
+      description: Install Homebrew
+      stdout: true
+      stderr: true
+    - command: sh iterm2/install_utilities.sh
+      description: Install iTerm2 utilities
+      stdout: true
+      stderr: true
