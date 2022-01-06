@@ -1,8 +1,10 @@
 cask_args appdir: '/Applications'
 
+tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/core'
 tap 'homebrew/services'
+tap "warrensbox/tap"
 
 # Packages
 brew 'bat'
@@ -22,13 +24,15 @@ brew 'wget'
 brew 'xz'
 brew 'z'
 brew 'source-highlight'
+brew 'pandoc'
+brew 'azure-cli'
 
 # Casks
-#cask 'alfred'
-#cask 'iterm2'
+cask 'alfred'
+cask 'iterm2'
 cask 'rectangle'
 cask 'sourcetree'
-#cask '1password'
+cask '1password'
 cask 'slack'
 cask 'docker'
 cask 'zoom'
@@ -37,3 +41,43 @@ cask 'bartender'
 cask 'istat-menus'
 cask 'powershell'
 cask 'microsoft-edge'
+cask 'obsidian'
+cask 'discord'
+
+# awscli and dependencies
+#
+# Official Amazon AWS command-line interface
+brew 'awscli'
+
+# Integrated shell for working with the AWS CLI
+brew 'aws-shell'
+
+# Lightweight and flexible command-line JSON processor
+brew 'jq'
+
+# Utility for easily assuming AWS IAM roles from the command-line
+brew 'awsume'
+
+# Tool to generate documentation from Terraform modules
+brew 'terraform-docs'
+
+# Linter for Terraform files
+brew 'tflint'
+
+# Framework for managing multi-language pre-commit hooks
+brew 'pre-commit'
+
+# Prevent cloud misconfigurations during build-time for IaC tools
+brew 'checkov'
+
+#
+## Terragrunt version manager written in Go
+## https://github.com/warrensbox/tgswitch
+#
+brew "tgswitch"
+
+#
+## Terraform version manager written in Go
+## https://github.com/warrensbox/terraform-switcher
+#
+brew "tfswitch"
