@@ -1,0 +1,14 @@
+- plugins:
+    - dotbot-plugins/dotbot-apt
+
+- apt:
+    - dh-autoreconf
+    - subversion
+    - vim
+    - batcat
+
+- shell:
+    - [
+        cat gterminal.conf | dconf load /org/gnome/terminal/,
+        Updating gnome terminal settings,
+      ]

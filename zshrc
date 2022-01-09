@@ -1,4 +1,4 @@
-source ~/.zinit/zinit.zsh
+source ${HOME}/.zinit/zinit.zsh
 
 zinit light-mode for zdharma-continuum/zinit-annex-bin-gem-node
 zinit light zdharma-continuum/zinit-annex-patch-dl
@@ -10,6 +10,19 @@ case "$OSTYPE" in
 esac
 
 zinit ice depth"1" lucid; zinit light romkatv/powerlevel10k
+
+zinit for \
+    atclone'
+      autoreconf -fi \
+      && ./configure --with-oniguruma=builtin \
+      && make \
+      && ln -sfv $PWD/jq.1 $ZPFX/man/man1' \
+    as'null' \
+    if'(( ! ${+commands[jq]} ))' \
+    lucid    \
+    sbin'jq' \
+    wait     \
+  stedolan/jq
 
 zinit for \
     from'gh-r' \
@@ -112,7 +125,7 @@ zinit load MenkeTechnologies/zsh-more-completions
 #zinit ice as"completion" lucid; zinit snippet OMZP::docker/_docker
 zinit ice use"init.sh"; zinit load b4b4r07/enhancd
 
-zstyle ":omz:plugins:ssh-agent" identities id_ed25519 id_rsa
+zstyle ":omz:plugins:ssh-agent" identities id_ed25519
 zstyle ":omz:plugins:ssh-agent" ssh-add-args --apple-use-keychain
 zstyle ":omz:plugins:ssh-agent" agent-forwarding on
 zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
@@ -189,7 +202,7 @@ fi
 # alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
 alias tf="terraform"
 
-source .keybindings.zsh
+source ${HOME}/.keybindings.zsh
 
 # file rename magick
 bindkey "^[m" copy-prev-shell-word

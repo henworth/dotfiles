@@ -1,6 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+	url = https://github.com/henworth/dotbot.git
 	ignore = dirty
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
@@ -64,3 +64,15 @@
 	path = zinit
 	url = https://github.com/zdharma-continuum/zinit.git
 	ignore = dirty
+[submodule "dotbot-template"]
+	path = dotbot-plugins/dotbot-template
+	url = https://github.com/ssbanerje/dotbot-template.git
+[submodule "dotbot-plugins/dotbot-apt"]
+	path = dotbot-plugins/dotbot-apt
+	url = https://github.com/bryant1410/dotbot-apt
+[submodule "dotbot-plugins/dotbot-template"]
+	path = dotbot-plugins/dotbot-template
+	url = https://github.com/ssbanerje/dotbot-template.git
+[submodule "nord-gnome-terminal"]
+	path = nord-gnome-terminal
+	url = https://github.com/arcticicestudio/nord-gnome-terminal.git
