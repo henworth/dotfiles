@@ -1,5 +1,6 @@
 - plugins:
     - dotbot-plugins/dotbot-apt
+    - dotbot-plugins/dotbot-template
 
 - shell:
     - [
@@ -11,8 +12,8 @@
     - ~/.gitconfig:
         source_file: gitconfig
         params:
-          EMAIL: michael.hennessy@dutchie.com
-          GITHUB_USERNAME: jd
+          EMAIL: henworth@henabytes.com
+          GITHUB_USERNAME: henworth
           SIGNING_KEY: B0ACD214A1751462
           CREDENTIAL_HELPER: cache --timeout 36000
 

@@ -8,10 +8,13 @@
 [user]
   email = {{EMAIL}}
   name = Mike Hennessy
-  signingkey = {{SIGNING_KEY}
+  signingkey = {{SIGNING_KEY}}
 
 [github]
   user = {{GITHUB_USERNAME}}
+
+[credential]
+  helper = {{CREDENTIAL_HELPER}}
 
 [interactive]
   diffFilter = delta --color-only
