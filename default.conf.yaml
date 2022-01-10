@@ -27,20 +27,6 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - template:
-    # - ~/.gitconfig:
-    #     source_file: gitconfig
-    #     params:
-    #       NAME: John Doe
-    #       EMAIL: jd@jd.com
-    #       GITHUB_USERNAME: jd
-    #       SIGNING_KEY: ????
-    #       SMTP_SERVER: smtp.gmail.com
-    #       SMTP_PORT: 587
-    #       SMTP_ENCRYPTION: tls
-    #       __UNAME__:
-    #         CREDENTIAL_HELPER:
-    #           Darwin: osxkeychain
-    #           Linux: cache --timeout 36000
     - ~/.gnupg/gpg-agent.conf:
         source_file: gpg-agent.conf
         params:

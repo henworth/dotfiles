@@ -1,14 +1,23 @@
 - plugins:
     - dotbot-plugins/dotbot-apt
 
-- apt:
-    - dh-autoreconf
-    - subversion
-    - vim
-    - batcat
-
 - shell:
     - [
         cat gterminal.conf | dconf load /org/gnome/terminal/,
         Updating gnome terminal settings,
       ]
+
+- template:
+    - ~/.gitconfig:
+        source_file: gitconfig
+        params:
+          EMAIL: michael.hennessy@dutchie.com
+          GITHUB_USERNAME: jd
+          SIGNING_KEY: B0ACD214A1751462
+          CREDENTIAL_HELPER: cache --timeout 36000
+
+- apt:
+    - dh-autoreconf
+    - subversion
+    - vim
+    - batcat

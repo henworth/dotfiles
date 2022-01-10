@@ -48,5 +48,4 @@ filetype plugin indent on    " required
 let g:airline_powerline_fonts = 1
 set backspace=indent,eol,start
 
-
 colorscheme nord

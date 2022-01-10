@@ -1,0 +1,45 @@
+[core]
+  pager = delta
+  editor = vim
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = {{HOME_DIR}}/.gitignore_global
+  autocrlf = input
+
+[user]
+  email = {{EMAIL}}
+  name = Mike Hennessy
+  signingkey = {{SIGNING_KEY}
+
+[github]
+  user = {{GITHUB_USERNAME}}
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[push]
+  default = current
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[commit]
+  template = {{HOME_DIR}}/.stCommitMsg
+  gpgsign = true
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process

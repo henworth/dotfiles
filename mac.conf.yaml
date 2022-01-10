@@ -1,8 +1,5 @@
-- defaults:
-    link:
-      relink: true
-
-- clean: ["~"]
+- plugins:
+    - dotbot-plugins/dotbot-brew
 
 - create:
     - ~/.iterm2/bin
@@ -12,11 +9,19 @@
     ~/.iterm2_shell_integration.zsh: iterm2/shell_integration.zsh
 
 - shell:
-    - command: sh homebrew/install.sh
-      description: Install Homebrew
-      stdout: true
-      stderr: true
     - command: sh iterm2/install_utilities.sh
       description: Install iTerm2 utilities
       stdout: true
       stderr: true
+
+- template:
+    - ~/.gitconfig:
+        source_file: gitconfig
+        params:
+          EMAIL: michael.hennessy@dutchie.com
+          GITHUB_USERNAME: henworth
+          SIGNING_KEY: F018CF6CF901772D
+          CREDENTIAL_HELPER: osxkeychain
+
+- brewfile:
+    - homebrew/Brewfile

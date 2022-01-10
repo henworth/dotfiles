@@ -76,3 +76,6 @@
 [submodule "nord-gnome-terminal"]
 	path = nord-gnome-terminal
 	url = https://github.com/arcticicestudio/nord-gnome-terminal.git
+[submodule "dotbot-plugins/dotbot-brew"]
+	path = dotbot-plugins/dotbot-brew
+	url = https://github.com/d12frosted/dotbot-brew.git
