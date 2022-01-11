@@ -69,7 +69,7 @@
 	url = https://github.com/ssbanerje/dotbot-template.git
 [submodule "dotbot-plugins/dotbot-apt"]
 	path = dotbot-plugins/dotbot-apt
-	url = https://github.com/bryant1410/dotbot-apt
+	url = https://github.com/henworth/dotbot-apt.git
 [submodule "dotbot-plugins/dotbot-template"]
 	path = dotbot-plugins/dotbot-template
 	url = https://github.com/ssbanerje/dotbot-template.git

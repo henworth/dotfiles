@@ -21,4 +21,4 @@
     - dh-autoreconf
     - subversion
     - vim
-    - batcat
+    - bat
