@@ -1,7 +1,8 @@
 source ${HOME}/.zinit/zinit.zsh
 
-zinit light-mode for zdharma-continuum/zinit-annex-bin-gem-node
-zinit light zdharma-continuum/zinit-annex-patch-dl
+zinit ice depth"1" lucid; zinit light romkatv/powerlevel10k
+
+zturbo(){ zinit depth'1' lucid ${1/#[0-9][a-d]/wait"${1}"} "${@:2}"; }
 
 case "$OSTYPE" in
   linux*) bpick='*((#s)|/)*(linux|musl)*((#e)|/)*' ;;
@@ -9,7 +10,39 @@ case "$OSTYPE" in
   *) echo 'WARN: unsupported system -- some cli programs might not work' ;;
 esac
 
-zinit ice depth"1" lucid; zinit light romkatv/powerlevel10k
+zi light-mode for \
+  atinit"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+  as'completion' \
+    OMZL::{'completion','key-bindings','termsupport'}.zsh \
+  zdharma-continuum/zinit-annex-{'submods','patch-dl','bin-gem-node','rust'}
+
+zturbo light-mode for \
+  vladdoster/gitfast-zsh-plugin \
+  pack'bgn-binary+keys' id-as'junegunn/fzf' fzf \
+  has'brew' as'completion' https://raw.githubusercontent.com/Homebrew/brew/master/completions/zsh/_brew \
+  has'docker' as'completion' OMZP::docker/_docker \
+  has'docker-compose' as'completion' OMZP::docker-compose/_docker-compose \
+  has'go' OMZP::golang as'completion' OMZP::golang/_golang \
+  has'pip' OMZP::pip as'completion' OMZP::pip/_pip \
+  has'rsync' PZTM::rsync \
+  has'terraform' OMZP::terraform as'completion' OMZP::terraform/_terraform \
+  svn submods'zsh-users/zsh-completions -> external' \
+  blockf atpull'zinit creinstall -q .' \
+    PZTM::completion \
+  svn submods'zsh-users/zsh-history-substring-search -> external' \
+    PZT::modules/history-substring-search OMZL::history.zsh \
+  svn submods'zsh-users/zsh-autosuggestions -> external' \
+    PZTM::autosuggestions \
+  OMZP::ssh-agent \
+  PZTM::environment \
+  PZTM::terminal \
+  PZTM::spectrum \
+  PZTM::history \
+  PZTM::command-not-found \
+  PZTM::tmux \
+  PZTM::python \
+  PZTM::ruby
 
 zinit for \
     atclone'
@@ -24,82 +57,23 @@ zinit for \
     wait     \
   stedolan/jq
 
-zinit for \
-    from'gh-r' \
-    sbin'**/delta -> delta' \
-  dandavison/delta
+zturbo from'gh-r' as'command' for \
+  sbin'glow' charmbracelet/glow \
+  sbin'grex' pemistahl/grex
 
-zinit for \
-    from'gh-r' \
-    sbin'**/exa -> exa' \
-    atclone'cp -vf completions/exa.zsh _exa' \
-  ogham/exa
-
-zinit for \
-    as'command' \
-    from'gh-r' \
-    sbin'**/fd -> fd' \
-  @sharkdp/fd
-
-zinit pack"bgn+keys" for fzf
-
-#zinit for \
-#  vladdoster/gitfast-zsh-plugin \
-#  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
-#    zdharma-continuum/fast-syntax-highlighting \
-#  id-as'junegunn/fzf' nocompile pick'/dev/null' sbin'fzf' src'key-bindings.zsh' \
-#  from'gh-r' atclone'mkdir -p $ZPFX/{bin,man/man1}' atpull'%atclone' \
-#  dl'
-#      https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh -> _fzf_completion;
-#      https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh -> key-bindings.zsh;
-#      https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf-tmux.1 -> $ZPFX/man/man1/fzf-tmux.1;
-#      https://raw.githubusercontent.com/junegunn/fzf/master/man/man1/fzf.1 -> $ZPFX/man/man1/fzf.1' \
-#  @junegunn/fzf \
-#  OMZP::fzf
-
-zinit for \
-    as'command' \
-    from'gh-r' \
-    sbin'glow' \
-  charmbracelet/glow
-
-zinit for \
-    as'command' \
-    from'gh-r' \
-    sbin'grex' \
-  pemistahl/grex
-
-# zinit for \
-#     as'null' \
-#     atclone'%atpull' \
-#     atpull'
-#       ./bin/brew update --preinstall \
-#       && ln -sf $PWD/completions/zsh/_brew $ZINIT[COMPLETIONS_DIR] \
-#       && rm -f brew.zsh \
-#       && ./bin/brew shellenv --dummy-arg > brew.zsh \
-#       && zcompile brew.zsh' \
-#     depth'3' \
-#     nocompletions \
-#     sbin'bin/brew' \
-#     src'brew.zsh' \
-#   Homebrew/brew
-
-zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
-  blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions
-
-zinit wait lucid for \
-  OMZP::ssh-agent \
-  PZTM::environment \
-  PZTM::terminal \
-  PZTM::spectrum \
-  PZTM::history \
-  PZTM::command-not-found \
-  PZTM::tmux \
-  PZTM::python \
-  PZTM::ruby \
-  zdharma-continuum/history-search-multi-word
+zturbo from'gh-r' as'program' for \
+  sbin'bat*/bat'     @sharkdp/bat     \
+  sbin'delta*/delta' dandavison/delta \
+  sbin'fd*/fd'       @sharkdp/fd      \
+  sbin'ripgrep*/rg'  BurntSushi/ripgrep \
+  sbin'hyperfine*/hyperfine' @sharkdp/hyperfine \
+  sbin'shfmt* -> shfmt'      @mvdan/sh          \
+  sbin'nvim*/**/nvim' atinit"alias v=$EDITOR" neovim/neovim \
+  sbin'**/exa'        atclone'cp -vf completions/exa.zsh _exa' \
+  atload"alias l='ls -blF'; alias la='ls -abghilmu'
+         alias ll='ls -al'; alias tree='exa --tree'
+         alias ls='exa --git --group-directories-first'" \
+    ogham/exa
 
 # OMZP::pipenv \
 # OMZP::pyenv
@@ -108,7 +82,6 @@ zinit wait svn lucid for \
   OMZP::git \
   OMZP::gitfast \
   OMZP::macos \
-  OMZP::terraform \
   as"null" PZTM::archive
 
 #PZTM::docker \
@@ -128,7 +101,7 @@ zinit ice use"init.sh"; zinit load b4b4r07/enhancd
 zstyle ":omz:plugins:ssh-agent" identities id_ed25519
 zstyle ":omz:plugins:ssh-agent" ssh-add-args --apple-use-keychain
 zstyle ":omz:plugins:ssh-agent" agent-forwarding on
-zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
+#zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
 #zstyle ':completion:*:*:git:*' script ~/.zinit/snippets/OMZP::gitfast/git-completion.bash
 # zstyle ':completion:*:*:awsume:*' script /usr/local/bin/awsume-autocomplete
 zstyle ":prezto:module:terminal" auto-title "yes"
@@ -185,9 +158,6 @@ export BAT_THEME=Nord
 PATH="${HOME}/bin:${HOME}/go/bin:${PATH}"
 
 if [[ `uname` == "Darwin" ]]; then
-  alias ls="exa --git"
-  alias cat="bat"
-  alias less="bat"
   PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
   export LESSOPEN="| src-hilite-lesspipe.sh %s"
@@ -196,16 +166,19 @@ if [[ `uname` == "Darwin" ]]; then
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 else
   test -e ~/.dircolors && eval $(dircolors ~/.dircolors)
-  alias ls="ls --color=auto"
 fi
+
+  alias cat="bat"
+  alias less="bat"
 
 # alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
 alias tf="terraform"
 
-source ${HOME}/.keybindings.zsh
-
 # file rename magick
-bindkey "^[m" copy-prev-shell-word
+bindkey '^[m' copy-prev-shell-word
+
+source ${HOME}/.zinit/plugins/junegunn---fzf/_fzf_completion
+source ${HOME}/.zinit/plugins/junegunn---fzf/key-bindings.zsh
 
 load-tfswitch() {
   local tfswitchrc_path=".terraform-version"
@@ -214,8 +187,8 @@ load-tfswitch() {
     tfswitch
   fi
 }
-add-zsh-hook chpwd load-tfswitch
-load-tfswitch
+#add-zsh-hook chpwd load-tfswitch
+#load-tfswitch
 
 load-tgswitch() {
   local tgswitchrc_path=".terragrunt-version"
@@ -224,14 +197,15 @@ load-tgswitch() {
     tgswitch
   fi
 }
-add-zsh-hook chpwd load-tgswitch
-load-tgswitch
+#add-zsh-hook chpwd load-tgswitch
+#load-tgswitch
 
-if [[ `echo $(pyenv which awsume 2>/dev/null)` != "" ]]; then
-  alias awsume="source \$(pyenv which awsume)"
-  fpath+=( ${HOME}/.awsume/zsh-autocomplete )
-fi
+#if [[ `echo $(pyenv which awsume 2>/dev/null)` != "" ]]; then
+#  alias awsume="source \$(pyenv which awsume)"
+#  fpath+=( ${HOME}/.awsume/zsh-autocomplete )
+#fi
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
