@@ -4,7 +4,7 @@
 
 - shell:
     - [
-        cat gterminal.conf | dconf load /org/gnome/terminal/,
+        if command -v dconf 2>&1 >/dev/null; then cat gterminal.conf | dconf load /org/gnome/terminal/; fi,
         Updating gnome terminal settings,
       ]
 
