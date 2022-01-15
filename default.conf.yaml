@@ -19,9 +19,6 @@
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
-    ~/.zprofile: zprofile
-    ~/.zshenv: zshenv
-    ~/.keybindings.zsh: keybindings.zsh
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
