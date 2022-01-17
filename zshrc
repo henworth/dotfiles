@@ -68,7 +68,9 @@ zturbo from'gh-r' as'program' for \
   sbin'ripgrep*/rg'  BurntSushi/ripgrep \
   sbin'hyperfine*/hyperfine' @sharkdp/hyperfine \
   sbin'shfmt* -> shfmt'      @mvdan/sh          \
-  sbin'nvim*/**/nvim' atinit"alias v=$EDITOR" neovim/neovim \
+  sbin'nvim*/**/nvim' \
+  atinit"alias v=nvim; alias vi=nvim; alias vim=nvim" \
+    neovim/neovim \
   sbin'**/exa'        atclone'cp -vf completions/exa.zsh _exa' \
   atload"alias l='ls -blF'; alias la='ls -abghilmu'
          alias ll='ls -al'; alias tree='exa --tree'
@@ -168,8 +170,8 @@ else
   test -e ~/.dircolors && eval $(dircolors ~/.dircolors)
 fi
 
-  alias cat="bat"
-  alias less="bat"
+alias cat="bat"
+alias less="bat"
 
 # alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
 alias tf="terraform"
@@ -206,6 +208,7 @@ load-tgswitch() {
 #fi
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+export EDITOR="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -69,7 +69,7 @@
 	url = https://github.com/ssbanerje/dotbot-template.git
 [submodule "dotbot-plugins/dotbot-apt"]
 	path = dotbot-plugins/dotbot-apt
-	url = https://github.com/henworth/dotbot-apt.git
+	url = https://github.com/bryant1410/dotbot-apt
 [submodule "dotbot-plugins/dotbot-template"]
 	path = dotbot-plugins/dotbot-template
 	url = https://github.com/ssbanerje/dotbot-template.git
@@ -79,3 +79,75 @@
 [submodule "dotbot-plugins/dotbot-brew"]
 	path = dotbot-plugins/dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
+[submodule "vim/plugged/vim/plugged/bufferline.nvim"]
+	path = vim/plugged/vim/plugged/bufferline.nvim
+	url = https://github.com/akinsho/bufferline.nvim.git
+[submodule "vim/plugged/bufferline.nvim"]
+	path = vim/plugged/bufferline.nvim
+	url = https://github.com/akinsho/bufferline.nvim.git
+[submodule "vim/bufferline.nvim"]
+	path = vim/bufferline.nvim
+	url = https://github.com/akinsho/bufferline.nvim.git
+[submodule "vim/gitsigns.nvim"]
+	path = vim/gitsigns.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "vim/lualine.nvim"]
+	path = vim/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "vim/nerdtree"]
+	path = vim/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/nerdtree-git-plugin"]
+	path = vim/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/nord.nvim"]
+	path = vim/nord.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "vim/nvim-treesitter"]
+	path = vim/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "vim/nvim-web-devicons"]
+	path = vim/nvim-web-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/plenary.nvim"]
+	path = vim/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "vim/vim-devicons"]
+	path = vim/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/vim-plug-auto-install"]
+	path = vim/vim-plug-auto-install
+	url = https://github.com/ReallySnazzy/vim-plug-auto-install.git
+[submodule "vim/plugged/editorconfig-vim"]
+	path = vim/plugged/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "vim/plugged/gitsigns.nvim"]
+	path = vim/plugged/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
+[submodule "vim/plugged/lualine.nvim"]
+	path = vim/plugged/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "vim/plugged/nerdtree"]
+	path = vim/plugged/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/plugged/nerdtree-git-plugin"]
+	path = vim/plugged/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/plugged/nord.nvim"]
+	path = vim/plugged/nord.nvim
+	url = https://github.com/shaunsingh/nord.nvim.git
+[submodule "vim/plugged/nvim-treesitter"]
+	path = vim/plugged/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "vim/plugged/nvim-web-devicons"]
+	path = vim/plugged/nvim-web-devicons
+	url = https://github.com/kyazdani42/nvim-web-devicons.git
+[submodule "vim/plugged/plenary.nvim"]
+	path = vim/plugged/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "vim/plugged/vim-devicons"]
+	path = vim/plugged/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/plugged/vim-plug-auto-install"]
+	path = vim/plugged/vim-plug-auto-install
+	url = https://github.com/ReallySnazzy/vim-plug-auto-install.git

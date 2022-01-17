@@ -18,7 +18,5 @@
           CREDENTIAL_HELPER: cache --timeout 36000
 
 - apt:
-    - dh-autoreconf
+    - dconf-cli
     - subversion
-    - vim
-    - bat
