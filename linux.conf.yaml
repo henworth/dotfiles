@@ -7,6 +7,10 @@
         if command -v dconf 2>&1 >/dev/null; then cat gterminal.conf | dconf load /org/gnome/terminal/; fi,
         Updating gnome terminal settings,
       ]
+    - [
+        bash 1password-gpg-keys.sh 92216B6739F01726EEA30872B0ACD214A1751462,
+        Install 1password CLI and get gpg keys,
+      ]
 
 - template:
     - ~/.gitconfig:
