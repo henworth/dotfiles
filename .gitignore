@@ -3,5 +3,6 @@ tmux/resurrect
 Brewfile.lock.json
 vim/.*
 gnupg/*
+__pycache__/*
 
 !gnupg/gpg-agent.conf

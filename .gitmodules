@@ -70,6 +70,7 @@
 [submodule "dotbot-plugins/dotbot-apt"]
 	path = dotbot-plugins/dotbot-apt
 	url = https://github.com/bryant1410/dotbot-apt.git
+    ignore = dirty
 [submodule "dotbot-plugins/dotbot-template"]
 	path = dotbot-plugins/dotbot-template
 	url = https://github.com/ssbanerje/dotbot-template.git

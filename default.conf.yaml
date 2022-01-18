@@ -19,6 +19,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
+    ~/.git-commit-template: git-commit-template
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
