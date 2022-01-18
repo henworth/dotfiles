@@ -172,9 +172,14 @@ fi
 
 alias cat="bat"
 alias less="bat"
-
-# alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
 alias tf="terraform"
+alias tfp="terraform plan"
+alias tfa="terraform apply"
+alias tg="terragrunt"
+alias tgp="terragrunt plan"
+alias tga="terragrunt apply"
+alias tgaa="terragrunt apply -auto-approve"
+alias tgar="terragrunt apply -auto-approve -refresh-only"
 
 # file rename magick
 bindkey '^[m' copy-prev-shell-word
@@ -183,9 +188,7 @@ source ${HOME}/.zinit/plugins/junegunn---fzf/_fzf_completion
 source ${HOME}/.zinit/plugins/junegunn---fzf/key-bindings.zsh
 
 load-tfswitch() {
-  local tfswitchrc_path=".terraform-version"
-
-  if [ -f "$tfswitchrc_path" ]; then
+  if [[ "$PWD" =~ "terraform" ]]; then
     tfswitch
   fi
 }
@@ -193,9 +196,7 @@ load-tfswitch() {
 #load-tfswitch
 
 load-tgswitch() {
-  local tgswitchrc_path=".terragrunt-version"
-
-  if [ -f "$tgswitchrc_path" ]; then
+  if [[ "$PWD" =~ "terraform/live" ]]; then
     tgswitch
   fi
 }
