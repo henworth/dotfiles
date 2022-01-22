@@ -1,0 +1,11 @@
+- shell:
+    - [
+        cp windows-terminal-config.json /mnt/c/Users/Mike/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json,
+        Updating windows terminal settings,
+      ]
+
+- template:
+    - ~/.gnupg/gpg-agent.conf:
+        source_file: gpg-agent.conf
+        params:
+          PINENTRY_PROGRAM: /usr/bin/pinentry-tty

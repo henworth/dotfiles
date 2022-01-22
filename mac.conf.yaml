@@ -23,6 +23,10 @@
           GITHUB_USERNAME: henworth
           SIGNING_KEY: F018CF6CF901772D
           CREDENTIAL_HELPER: osxkeychain
+    - ~/.gnupg/gpg-agent.conf:
+        source_file: gpg-agent.conf
+        params:
+          PINENTRY_PROGRAM: /usr/bin/pinentry-mac
 
 - brewfile:
     - homebrew/Brewfile

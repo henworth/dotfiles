@@ -16,9 +16,11 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 if [[ `uname` == "Darwin" ]]; then
     OS_CONFIG="mac"
 elif [[ `uname -r | tr '[:upper:]' '[:lower:]'` == *"microsoft"* ]]; then
-    OS_CONFIG="wsl"
+    BASE_OS_CONFIG="linux-base"
+    OS_CONFIG="linux-wsl"
 else
-    OS_CONFIG="linux"
+    BASE_OS_CONFIG="linux-base"
+    OS_CONFIG="linux-debian"
 fi
 
 for conf in ${DEFAULT_CONFIG_PREFIX} ${OS_CONFIG} ${@}; do

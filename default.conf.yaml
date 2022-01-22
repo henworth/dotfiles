@@ -8,7 +8,9 @@
 - clean: ["~"]
 
 - create:
-    - ~/bin
+    ~/bin:
+    ~/.gnupg:
+      mode: 0700
 
 - link:
     ~/.dircolors: nord-dircolors/src/dir_colors

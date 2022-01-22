@@ -41,8 +41,9 @@ zturbo light-mode for \
   PZTM::history \
   PZTM::command-not-found \
   PZTM::tmux \
-  PZTM::python \
   PZTM::ruby
+
+# OMZP::pipenv \
 
 zinit for \
     atclone'
@@ -77,8 +78,7 @@ zturbo from'gh-r' as'program' for \
          alias ls='exa --git --group-directories-first'" \
     ogham/exa
 
-# OMZP::pipenv \
-# OMZP::pyenv
+zinit pack"bgn" git for pyenv
 
 zinit wait svn lucid for \
   OMZP::git \
@@ -88,36 +88,15 @@ zinit wait svn lucid for \
 
 #PZTM::docker \
 
-#zinit ice svn pick"completion.zsh" src"git.zsh"; zinit snippet OMZ::lib
-
-# zinit for \
-#   atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
-#   awsume
-
+zinit ice use"init.sh"; zinit load b4b4r07/enhancd
 zinit ice lucid nocompile wait'0e' nocompletions
 zinit load MenkeTechnologies/zsh-more-completions
 
-#zinit ice as"completion" lucid; zinit snippet OMZP::docker/_docker
-zinit ice use"init.sh"; zinit load b4b4r07/enhancd
+#zinit ice use"op.plugin.zsh"; zinit load sirhc/op.plugin.zsh
 
 zstyle ":omz:plugins:ssh-agent" identities id_ed25519
-zstyle ":omz:plugins:ssh-agent" ssh-add-args --apple-use-keychain
 zstyle ":omz:plugins:ssh-agent" agent-forwarding on
-#zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
-#zstyle ':completion:*:*:git:*' script ~/.zinit/snippets/OMZP::gitfast/git-completion.bash
-# zstyle ':completion:*:*:awsume:*' script /usr/local/bin/awsume-autocomplete
-zstyle ":prezto:module:terminal" auto-title "yes"
-zstyle ":prezto:module:terminal:window-title" format "%n@%m: %s"
-zstyle ":prezto:module:terminal:tab-title" format "%m: %s"
-zstyle ":prezto:module:terminal:multiplexer-title" format "%s"
 
-# zstyle ":prezto:module:ssh:load" identities id_ed25519
-# zstyle ":prezto:*:*" color "yes"
-# zstyle ":prezto:module:tmux:auto-start" local "yes"
-# zstyle ":prezto:module:tmux:auto-start" remote "yes"
-# zstyle ":prezto:module:tmux:iterm" integrate "yes"
-
-# Initialization code that may require console input (password prompts, [y/n]
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -125,51 +104,32 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible/vault_pass.txt
-#export PYENV_ROOT="$HOME/.pyenv"
-#export GOROOT=/usr/local/go
-#export GOPATH=$HOME/work
-#export PATH="$HOME/.rbenv/bin:$PYENV_ROOT/bin:$PATH:$GOROOT/bin:$HOME/.local/bin"
+zstyle ":prezto:module:terminal" auto-title "yes"
+zstyle ":prezto:module:terminal:window-title" format "%n@%m: %s"
+zstyle ":prezto:module:terminal:tab-title" format "%m: %s"
+zstyle ":prezto:module:terminal:multiplexer-title" format "%s"
 
-export ENHANCD_DISABLE_HOME=1
-export BAT_THEME=Nord
-
-#if command -v pyenv 1>/dev/null 2>&1; then
-#  eval "$(pyenv init -)"
-#  eval "$(pyenv virtualenv-init -)"
-#fi
-
-#if command -v rbenv 1>/dev/null 2>&1; then
-#  eval "$(rbenv init -)"
-#fi
-
-#if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-#  source ~/.gnupg/.gpg-agent-info
-#  export GPG_AGENT_INFO
-#else
-#  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-#fi
-
-#export GPG_TTY=$(tty)
-
-#eval "$(direnv hook zsh)"
-#autoload -U bashcompinit
-#bashcompinit
-#eval "$(register-python-argcomplete pipx)"
+# zstyle ":prezto:module:tmux:auto-start" local "yes"
+# zstyle ":prezto:module:tmux:auto-start" remote "yes"
 
 PATH="${HOME}/bin:${HOME}/go/bin:${PATH}"
 
 if [[ `uname` == "Darwin" ]]; then
+  # zstyle ":prezto:module:tmux:iterm" integrate "yes"
+  zstyle ":omz:plugins:ssh-agent" ssh-add-args --apple-use-keychain
+
   PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
   export LESSOPEN="| src-hilite-lesspipe.sh %s"
   export LESS=' -R '
+
   test -e "${HOME}/.dircolors" && eval $(dircolors -b "${HOME}/.dircolors")
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 else
-  test -e ~/.dircolors && eval $(dircolors ~/.dircolors)
+  test -e "${HOME}/.dircolors" && eval $(dircolors "${HOME}/.dircolors")
 fi
 
+alias tf="terraform"
 alias cat="bat"
 alias less="bat"
 alias tf="terraform"
@@ -203,11 +163,8 @@ load-tgswitch() {
 #add-zsh-hook chpwd load-tgswitch
 #load-tgswitch
 
-#if [[ `echo $(pyenv which awsume 2>/dev/null)` != "" ]]; then
-#  alias awsume="source \$(pyenv which awsume)"
-#  fpath+=( ${HOME}/.awsume/zsh-autocomplete )
-#fi
-
+export ENHANCD_DISABLE_HOME=1
+export BAT_THEME=Nord
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export EDITOR="nvim"
 

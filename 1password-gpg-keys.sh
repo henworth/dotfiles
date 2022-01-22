@@ -14,5 +14,6 @@ eval $(op signin personal)
 op get document "Personal GPG Public Key" --output ~/.gnupg/gpg-personal-public.gpg
 op get document "Personal GPG Private Key" --output ~/.gnupg/gpg-personal-private.gpg
 
-gpg --import ~/.gnupg/gpg-personal-public.gpg ~/.gnupg/gpg-personal-private.gpg
+gpg --import ~/.gnupg/gpg-personal-public.gpg 
+gpg --import --allow-secret-key-import ~/.gnupg/gpg-personal-private.gpg
 gpg --edit-key "$key_signature" trust quit
