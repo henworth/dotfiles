@@ -155,3 +155,6 @@
 [submodule "vim/plugged/vim-plug-auto-install"]
 	path = vim/plugged/vim-plug-auto-install
 	url = https://github.com/ReallySnazzy/vim-plug-auto-install.git
+[submodule "dotbot-plugins/dotbot-omnipkg"]
+	path = dotbot-plugins/dotbot-omnipkg
+	url = https://github.com/code-maniac/dotbot-omnipkg

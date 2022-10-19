@@ -1,20 +1,26 @@
 - plugins:
-    - dotbot-plugins/dotbot-apt
+    - dotbot-plugins/dotbot-omnipkg
     - dotbot-plugins/dotbot-template
+    - dotbot-plugins/dotbot-sudo
 
-- sudo:
-  - apt:
-    - golang
-    - subversion
+#- sudo:
+#  - apt:
+#   - golang
+#   - subversion
+#   - zsh
+
+- omnipkg:
+  - install:
     - zsh
 
-- shell:
+- sudo:
+  - shell:
     - command: chsh -s /bin/zsh
       stdin: true
       description: Changing shell to zsh
-    - command: bash 1password-gpg-keys.sh 92216B6739F01726EEA30872B0ACD214A1751462
-      stdin: true
-      description: Install 1password CLI and get gpg keys
+#    - command: bash 1password-gpg-keys.sh 92216B6739F01726EEA30872B0ACD214A1751462
+#      stdin: true
+#      description: Install 1password CLI and get gpg keys
 
 - template:
     - ~/.gitconfig:
@@ -22,5 +28,5 @@
         params:
           EMAIL: henworth@henabytes.com
           GITHUB_USERNAME: henworth
-          SIGNING_KEY: B0ACD214A1751462
+          SIGNING_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmJqnbZWv1mVs4otkm2NiSVeja44zBS/smKtQBsK67I
           CREDENTIAL_HELPER: cache --timeout 36000

@@ -10,6 +10,12 @@
   name = Mike Hennessy
   signingkey = {{SIGNING_KEY}}
 
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers
+
 [github]
   user = {{GITHUB_USERNAME}}
 

@@ -18,11 +18,14 @@ if [[ `uname` == "Darwin" ]]; then
 elif [[ `uname -r | tr '[:upper:]' '[:lower:]'` == *"microsoft"* ]]; then
     BASE_OS_CONFIG="linux-base"
     OS_CONFIG="linux-wsl"
+elif [[ `uname -r | tr '[:upper:]' '[:lower:]'` == *"fc"* ]]; then
+    BASE_OS_CONFIG="linux-base"
+    OS_CONFIG="linux-fedora"
 else
     BASE_OS_CONFIG="linux-base"
     OS_CONFIG="linux-debian"
 fi
 
-for conf in ${DEFAULT_CONFIG_PREFIX} ${OS_CONFIG} ${@}; do
+for conf in ${DEFAULT_CONFIG_PREFIX} ${BASE_OS_CONFIG} ${OS_CONFIG} ${@}; do
     "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${conf}${CONFIG_SUFFIX}"
 done
