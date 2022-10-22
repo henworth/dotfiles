@@ -1,6 +1,6 @@
 source ${HOME}/.zinit/zinit.zsh
 
-zinit ice depth"1" lucid; zinit light romkatv/powerlevel10k
+zinit ice depth'1' lucid; zinit light romkatv/powerlevel10k
 
 zturbo(){ zinit depth'1' lucid ${1/#[0-9][a-d]/wait"${1}"} "${@:2}"; }
 
@@ -10,16 +10,9 @@ case "$OSTYPE" in
   *) echo 'WARN: unsupported system -- some cli programs might not work' ;;
 esac
 
-zi light-mode for \
-  atinit"zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
-  as'completion' \
-    OMZL::{'completion','key-bindings','termsupport'}.zsh \
-  zdharma-continuum/zinit-annex-{'submods','patch-dl','bin-gem-node','rust'}
-
 zturbo light-mode for \
+  zdharma-continuum/zinit-annex-{'submods','patch-dl','bin-gem-node','rust'} \
   vladdoster/gitfast-zsh-plugin \
-  pack'bgn-binary+keys' id-as'junegunn/fzf' fzf \
   has'brew' as'completion' https://raw.githubusercontent.com/Homebrew/brew/master/completions/zsh/_brew \
   has'docker' as'completion' OMZP::docker/_docker \
   has'docker-compose' as'completion' OMZP::docker-compose/_docker-compose \
@@ -27,55 +20,49 @@ zturbo light-mode for \
   has'pip' OMZP::pip as'completion' OMZP::pip/_pip \
   has'rsync' PZTM::rsync \
   has'terraform' OMZP::terraform as'completion' OMZP::terraform/_terraform \
-  svn submods'zsh-users/zsh-completions -> external' \
-  blockf atpull'zinit creinstall -q .' \
-    PZTM::completion \
   svn submods'zsh-users/zsh-history-substring-search -> external' \
-    PZT::modules/history-substring-search OMZL::history.zsh \
-  svn submods'zsh-users/zsh-autosuggestions -> external' \
-    PZTM::autosuggestions \
-  OMZP::ssh-agent \
-  PZTM::environment \
-  PZTM::terminal \
-  PZTM::spectrum \
-  PZTM::history \
-  PZTM::command-not-found \
-  PZTM::tmux \
-  PZTM::ruby
+    PZT::modules/history-substring-search \
+    OMZL::history.zsh \
+    OMZP::ssh-agent \
+    PZTM::environment \
+    PZTM::terminal \
+    PZTM::spectrum \
+    PZTM::history \
+    PZTM::command-not-found \
+    PZTM::tmux \
+    PZTM::ruby
 
 # OMZP::pipenv \
 
-zinit for \
-    atclone'
-      autoreconf -fi \
-      && ./configure --with-oniguruma=builtin \
-      && make \
-      && ln -sfv $PWD/jq.1 $ZPFX/man/man1' \
-    as'null' \
-    if'(( ! ${+commands[jq]} ))' \
-    lucid    \
-    sbin'jq' \
-    wait     \
-  stedolan/jq
+zi for \
+  from'gh-r' as'null' sbin'fzf' junegunn/fzf \
+    https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh \
+  atclone'
+    autoreconf -fi && \ 
+    ./configure --with-oniguruma=builtin && \
+    make && \
+    ln -sfv $PWD/jq.1 $ZPFX/man/man1' \
+  as'null' \
+  if'(( ! ${+commands[jq]} ))' lucid sbin'jq' wait stedolan/jq
 
 zturbo from'gh-r' as'command' for \
   sbin'glow' charmbracelet/glow \
   sbin'grex' pemistahl/grex
 
 zturbo from'gh-r' as'program' for \
-  sbin'bat*/bat'     @sharkdp/bat     \
+  sbin'bat*/bat'     @sharkdp/bat \
+  sbin'vivid*/vivid' @sharkdp/vivid \
   sbin'delta*/delta' dandavison/delta \
-  sbin'fd*/fd'       @sharkdp/fd      \
+  sbin'fd*/fd'       @sharkdp/fd \
   sbin'ripgrep*/rg'  BurntSushi/ripgrep \
   sbin'hyperfine*/hyperfine' @sharkdp/hyperfine \
-  sbin'shfmt* -> shfmt'      @mvdan/sh          \
-  sbin'nvim*/**/nvim' \
-  atinit"alias v=nvim; alias vi=nvim; alias vim=nvim" \
-    neovim/neovim \
-  sbin'**/exa'        atclone'cp -vf completions/exa.zsh _exa' \
-  atload"alias l='ls -blF'; alias la='ls -abghilmu'
-         alias ll='ls -al'; alias tree='exa --tree'
-         alias ls='exa --git --group-directories-first'" \
+  sbin'shfmt* -> shfmt'      @mvdan/sh \
+  sbin'nvim*/**/nvim' atinit"alias v=nvim; alias vi=nvim; alias vim=nvim" neovim/neovim \
+  sbin'**/exa' \
+    atclone'cp -vf completions/exa.zsh _exa' \
+    atload"alias l='ls -blF'; alias la='ls -abghilmu'
+           alias ll='ls -al'; alias tree='exa --tree'
+           alias ls='exa --git --group-directories-first'" \
     ogham/exa
 
 zinit pack"bgn" git for pyenv
@@ -91,6 +78,16 @@ zinit wait svn lucid for \
 zinit ice use"init.sh"; zinit load b4b4r07/enhancd
 zinit ice lucid nocompile wait'0e' nocompletions
 zinit load MenkeTechnologies/zsh-more-completions
+
+# Syntax highlighting, Autosuggestions, Completions
+# From example http://zdharma-continuum.org/zinit/wiki/Example-Minimal-Setup/
+zinit wait lucid light-mode for \
+  atinit'zicompinit; zicdreplay' \
+    zdharma-continuum/fast-syntax-highlighting \
+  atload'_zsh_autosuggest_start' \
+    zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions
 
 #zinit ice use"op.plugin.zsh"; zinit load sirhc/op.plugin.zsh
 
@@ -143,9 +140,6 @@ alias tgar="terragrunt apply -auto-approve -refresh-only"
 
 # file rename magick
 bindkey '^[m' copy-prev-shell-word
-
-source ${HOME}/.zinit/plugins/junegunn---fzf/_fzf_completion
-source ${HOME}/.zinit/plugins/junegunn---fzf/key-bindings.zsh
 
 load-tfswitch() {
   if [[ "$PWD" =~ "terraform" ]]; then
