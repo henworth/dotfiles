@@ -45,6 +45,8 @@ zi for \
   as'null' \
   if'(( ! ${+commands[jq]} ))' lucid sbin'jq' wait stedolan/jq
 
+# @asdf-vm/asdf
+
 zturbo from'gh-r' as'command' for \
   sbin'glow' charmbracelet/glow \
   sbin'grex' pemistahl/grex
@@ -122,6 +124,9 @@ if [[ `uname` == "Darwin" ]]; then
 
   test -e "${HOME}/.dircolors" && eval $(dircolors -b "${HOME}/.dircolors")
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+  # heroku autocomplete setup
+  HEROKU_AC_ZSH_SETUP_PATH="${HOME}/Library/Caches/heroku/autocomplete/zsh_setup" && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 else
   test -e "${HOME}/.dircolors" && eval $(dircolors "${HOME}/.dircolors")
 fi
@@ -129,10 +134,10 @@ fi
 alias tf="terraform"
 alias cat="bat"
 alias less="bat"
-alias tf="terraform"
+# alias tf="terraform"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
-alias tg="terragrunt"
+# alias tg="terragrunt"
 alias tgp="terragrunt plan"
 alias tga="terragrunt apply"
 alias tgaa="terragrunt apply -auto-approve"
@@ -159,6 +164,24 @@ load-tgswitch() {
 
 export ENHANCD_DISABLE_HOME=1
 export BAT_THEME=Nord
+#if [[ `echo $(pyenv which awsume 2>/dev/null)` != "" ]]; then
+#  alias awsume="source \$(pyenv which awsume)"
+#  fpath+=( ${HOME}/.awsume/zsh-autocomplete )
+#fi
+#
+#if [[ `echo $(pyenv which awsume 2>/dev/null)` != "" ]]; then
+# alias awsume="source \$(pyenv which awsume)"
+# fpath+=( ${HOME}/.awsume/zsh-autocomplete )
+#fi
+
+# Created by `pipx` on 2022-03-01 18:35:15
+#export PATH="$PATH:/Users/mikehennessy/.local/bin"
+#autoload -U bashcompinit
+#bashcompinit
+#eval "$(register-python-argcomplete pipx)"
+#eval $(register-python-argcomplete pipx)
+#eval "$(goenv init -)"
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export EDITOR="nvim"
 
