@@ -162,6 +162,14 @@ load-tgswitch() {
 #add-zsh-hook chpwd load-tgswitch
 #load-tgswitch
 
+gen-rand() {
+  length=24
+  if [ ! -z $1 ]; then
+    length=$1
+  fi
+  tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $length ; echo
+}
+
 export ENHANCD_DISABLE_HOME=1
 export BAT_THEME=Nord
 #if [[ `echo $(pyenv which awsume 2>/dev/null)` != "" ]]; then
@@ -188,3 +196,6 @@ export EDITOR="nvim"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
