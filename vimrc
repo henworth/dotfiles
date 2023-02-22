@@ -49,3 +49,4 @@ let g:airline_powerline_fonts = 1
 set backspace=indent,eol,start
 
 colorscheme nord
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
