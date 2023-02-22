@@ -1,7 +1,21 @@
+- plugins:
+    - dotbot-plugins/dotbot-omnipkg
+
+- omnipkg:
+    - install:
+        - socat
+
+- link:
+    ~/.ssh-agent-bridge.sh: ssh-agent-bridge.sh
+
 - shell:
     - [
         cp windows-terminal-config.json /mnt/c/Users/Mike/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json,
         Updating windows terminal settings,
+      ]
+    - [
+        unzip -nq =( wget -qO- https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip ) -x LICENSE README.md -d ~/bin,
+        Downloading npiperelay,
       ]
 
 - template:

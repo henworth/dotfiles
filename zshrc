@@ -55,6 +55,8 @@ zplug load
 
 [[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
 
+[[ $(uname --kernel-release) == *"WSL2"* ]] && source ${HOME}/.ssh-agent-bridge.sh
+
 export BAT_THEME=Nord
 export EDITOR="nvim"
 export ENHANCD_DISABLE_HOME=1
