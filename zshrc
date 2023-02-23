@@ -50,10 +50,10 @@ fi
 
 zplug load
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ${HOME}/.p10k.zsh ]] || source ${HOME}/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
 
-[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
+[[ ! -f ${HOME}/.fzf.zsh ]] || source ${HOME}/.fzf.zsh
 
 [[ $(uname --kernel-release) == *"WSL2"* ]] && source ${HOME}/.ssh-agent-bridge.sh
 
