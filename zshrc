@@ -15,6 +15,8 @@ zplug "junegunn/fzf", \
 
 zplug "b4b4r07/enhancd", use:init.sh
 
+zplug "/home/linuxbrew/.linuxbrew/share/zsh", from:local
+
 ohmyzsh_plugins=(
     git
     kubectl
@@ -36,7 +38,7 @@ for plugin ($prezto_plugins); do
     zplug "modules/${plugin}", from:prezto
 done
 
-# (If the defer tag is given 2 or above, run after compinit command)
+# If the defer tag is given 2 or above, run after compinit command
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 if ! zplug check --verbose; then
@@ -45,8 +47,6 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
-
-zplug "/home/linuxbrew/.linuxbrew/share/zsh", from:local
 
 zplug load
 
@@ -57,6 +57,8 @@ zplug load
 
 [[ $(uname --kernel-release) == *"WSL2"* ]] && source ${HOME}/.ssh-agent-bridge.sh
 
+source ${HOME}/.keybindings.zsh
+
 export BAT_THEME=Nord
 export EDITOR="nvim"
 export ENHANCD_DISABLE_HOME=1
@@ -66,9 +68,7 @@ export FZF_DEFAULT_COMMAND="fd --type file"
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
 
-if zplug check b4b4r07/enhancd; then
-    export ENHANCD_FILTER=fzf-tmux
-fi
+zplug check b4b4r07/enhancd && export ENHANCD_FILTER=fzf-tmux
 
 gen-rand() {
   length=24
@@ -78,11 +78,13 @@ gen-rand() {
   tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $length ; echo
 }
 
+alias cat='bat'
 alias l='ls -blF'
 alias la='ls -abghilmu'
+alias less="bat"
 alias ll='ls -al'
-alias tree='exa --tree'
 alias ls='exa --git --group-directories-first'
+alias tree='exa --tree'
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
