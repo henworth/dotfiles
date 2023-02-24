@@ -14,7 +14,8 @@ zplug "junegunn/fzf", \
     hook-build:"./install --all"
 
 zplug "b4b4r07/enhancd", use:init.sh
-
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
 zplug "/home/linuxbrew/.linuxbrew/share/zsh", from:local
 
 ohmyzsh_plugins=(
