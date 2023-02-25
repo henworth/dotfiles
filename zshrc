@@ -1,6 +1,6 @@
 source ${HOME}/.zplug/init.zsh
 
-PATH="${HOME}/bin:${HOME}/go/bin:${PATH}"
+PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:${PATH}"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
