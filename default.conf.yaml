@@ -16,7 +16,7 @@
     ~/.dircolors: nord-dircolors/src/dir_colors
     ~/.tmux: tmux
     ~/.vim: vim
-    ~/.zinit: zinit
+    ~/.zplug: zplug
     ~/.p10k.zsh: p10k.zsh
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc

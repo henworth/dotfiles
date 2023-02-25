@@ -60,10 +60,6 @@
 [submodule "tmux/plugins/tmux-prefix-highlight"]
 	path = tmux/plugins/tmux-prefix-highlight
 	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
-[submodule "zinit"]
-	path = zinit
-	url = https://github.com/zdharma-continuum/zinit.git
-	ignore = dirty
 [submodule "dotbot-template"]
 	path = dotbot-plugins/dotbot-template
 	url = https://github.com/ssbanerje/dotbot-template.git
@@ -158,3 +154,7 @@
 [submodule "dotbot-plugins/dotbot-omnipkg"]
 	path = dotbot-plugins/dotbot-omnipkg
 	url = https://github.com/code-maniac/dotbot-omnipkg
+[submodule "zplug"]
+	path = zplug
+	url = https://github.com/zplug/zplug.git
+	ignore = dirty
