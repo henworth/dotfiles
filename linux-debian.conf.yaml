@@ -3,17 +3,11 @@
     - dotbot-plugins/dotbot-sudo
 
 - sudo:
-  - apt:
-    - dconf-cli
+    - apt:
+        - dconf-cli
 
 - shell:
     - [
         if command -v dconf 2>&1 >/dev/null; then cat gterminal.conf | dconf load /org/gnome/terminal/; fi,
         Updating gnome terminal settings,
       ]
-
-- template:
-    - ~/.gnupg/gpg-agent.conf:
-        source_file: gpg-agent.conf
-        params:
-          PINENTRY_PROGRAM: /usr/bin/pinentry-gnome3

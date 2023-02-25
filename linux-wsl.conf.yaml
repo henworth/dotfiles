@@ -17,9 +17,3 @@
         unzip -nq =( wget -qO- https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip ) -x LICENSE README.md -d ~/bin,
         Downloading npiperelay,
       ]
-
-- template:
-    - ~/.gnupg/gpg-agent.conf:
-        source_file: gpg-agent.conf
-        params:
-          PINENTRY_PROGRAM: /usr/bin/pinentry-tty

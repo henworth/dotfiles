@@ -5,16 +5,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-zplug "junegunn/fzf", \
-    from:github, \
-    as:command, \
-    rename-to:fzf, \
-    hook-build:"./install --all"
-
 zplug "b4b4r07/enhancd", use:init.sh
-
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "/home/linuxbrew/.linuxbrew/share/zsh", from:local
 
 ohmyzsh_plugins=(
@@ -50,23 +42,22 @@ fi
 
 zplug load
 
-[[ ! -f ${HOME}/.p10k.zsh ]] || source ${HOME}/.p10k.zsh
-(( ! ${+functions[p10k]} )) || p10k finalize
-
-[[ ! -f ${HOME}/.fzf.zsh ]] || source ${HOME}/.fzf.zsh
+source ${HOME}/.keybindings.zsh
+source ${HOME}/.fzf.zsh
+source ${HOME}/.p10k.zsh
 
 [[ $(uname --kernel-release) == *"WSL2"* ]] && source ${HOME}/.ssh-agent-bridge.sh
 
-source ${HOME}/.keybindings.zsh
+(( ! ${+functions[p10k]} )) || p10k finalize
 
 export BAT_THEME=Nord
 export EDITOR="nvim"
 export ENHANCD_DISABLE_HOME=1
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-export LS_COLORS="$(vivid generate nord)"
-export FZF_DEFAULT_COMMAND="fd --type file"
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_DEFAULT_COMMAND="fd --type file"
+export LS_COLORS="$(vivid generate nord)"
 export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
 zplug check b4b4r07/enhancd && export ENHANCD_FILTER=fzf-tmux
 

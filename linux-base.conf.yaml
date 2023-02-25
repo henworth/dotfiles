@@ -3,12 +3,6 @@
     - dotbot-plugins/dotbot-template
     - dotbot-plugins/dotbot-sudo
 
-#- sudo:
-#  - apt:
-#   - golang
-#   - subversion
-#   - zsh
-
 - omnipkg:
     - install:
         - zsh
@@ -18,9 +12,6 @@
         - command: chsh -s /bin/zsh
           stdin: true
           description: Changing shell to zsh
-#    - command: bash 1password-gpg-keys.sh 92216B6739F01726EEA30872B0ACD214A1751462
-#      stdin: true
-#      description: Install 1password CLI and get gpg keys
 
 - template:
     - ~/.gitconfig:
