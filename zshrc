@@ -7,6 +7,8 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
 zplug "/home/linuxbrew/.linuxbrew/share/zsh", from:local
 
 ohmyzsh_plugins=(
