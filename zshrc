@@ -68,7 +68,7 @@ gen-rand() {
   if [ ! -z $1 ]; then
     length=$1
   fi
-  tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $length ; echo
+  tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $length ; echo -n
 }
 
 alias cat='bat'
