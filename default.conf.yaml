@@ -1,4 +1,5 @@
 - plugins:
+    - dotbot-plugins/dotbot-brew
     - dotbot-plugins/dotbot-template
 
 - defaults:
@@ -25,3 +26,6 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+
+- brewfile:
+    - homebrew/Brewfile

@@ -15,5 +15,26 @@
       stdout: true
       stderr: true
 
+- brew:
+    - coreutils
+    - git
+    - htop
+    - tmux
+    - tree
+    - wget
+
 - brewfile:
     - homebrew/Brewfile
+
+- cask:
+    - 1password
+    - alfred
+    - bartender
+    - discord
+    - istat-menus
+    - iterm2
+    - obsidian
+    - rectangle
+    - slack
+    - sourcetree
+    - zoom

@@ -1,79 +1,59 @@
-cask_args appdir: '/Applications'
-
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/core'
-tap 'homebrew/services'
 tap "warrensbox/tap"
 
 # Packages
-brew 'bat'
-brew 'coreutils'
-brew 'exa'
-brew 'fzf'
-brew 'git'
-brew 'gnupg'
-brew 'pinentry-mac'
-brew 'htop'
-brew 'pyenv'
-brew 'pyenv-virtualenv'
-brew 'tmux'
-brew 'tree'
-brew 'wget'
-brew 'xz'
-brew 'z'
-brew 'source-highlight'
-brew 'pandoc'
-brew 'azure-cli'
-
-# Casks
-# cask 'alfred'
-cask 'iterm2'
-cask 'rectangle'
-cask 'sourcetree'
-# cask '1password'
-cask 'slack'
-cask 'docker'
-cask 'zoom'
-cask 'krisp'
-cask 'bartender'
-cask 'istat-menus'
-cask 'powershell'
-cask 'microsoft-edge'
-cask 'obsidian'
-cask 'discord'
+brew "bat"
+brew "fd"
+brew "flux"
+brew "git-delta"
+brew "gitops"
+brew "helm"
+brew "kubernetes-cli"
+brew "kubeseal"
+brew "jq"
+brew "ncurses"
+brew "neovim"
+brew "tree-sitter"
+brew "vivid"
+brew "exa"
+brew "fzf"
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "xz"
+brew "z"
+# brew "source-highlight"
+# brew "pandoc"
+# brew "azure-cli"
 
 # awscli and dependencies
 #
 # Official Amazon AWS command-line interface
-brew 'awscli'
+brew "awscli"
 
 # Integrated shell for working with the AWS CLI
-brew 'aws-shell'
+brew "aws-shell"
 
 # Lightweight and flexible command-line JSON processor
-brew 'jq'
 
 # Utility for easily assuming AWS IAM roles from the command-line
-brew 'awsume'
+brew "awsume"
 
 # Tool to generate documentation from Terraform modules
-brew 'terraform-docs'
+brew "terraform-docs"
 
 # Linter for Terraform files
-brew 'tflint'
+brew "tflint"
 
 # Framework for managing multi-language pre-commit hooks
-brew 'pre-commit'
+brew "pre-commit"
 
 # Prevent cloud misconfigurations during build-time for IaC tools
-brew 'checkov'
+brew "checkov"
 
 #
 ## Terragrunt version manager written in Go
 ## https://github.com/warrensbox/tgswitch
 #
-brew "tgswitch"
+# brew "tgswitch"
 
 #
 ## Terraform version manager written in Go
