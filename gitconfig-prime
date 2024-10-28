@@ -1,0 +1,8 @@
+[github]
+  user = mike-prime
+
+[user]
+  email = michael.hennessy@primeft.com
+  name = Mike Hennessy
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGC9BN8ZXqwtu3ff/PbHITqsErUDVQgBMPcMM5WD6DVU
+  credential = mike-prime

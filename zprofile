@@ -64,3 +64,9 @@ fi
 
 # Created by `pipx` on 2022-03-01 18:35:15
 export PATH="$PATH:/Users/mikehennessy/.local/bin"
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# Created by `pipx` on 2024-09-26 18:04:07
+export PATH="$PATH:/Users/mike/.local/bin"

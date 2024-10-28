@@ -52,3 +52,6 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
+
+[includeIf "hasconfig:remote.*.url:git@github.com:primeft/**"]
+  path = .gitconfig-prime

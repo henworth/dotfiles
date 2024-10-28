@@ -1,160 +1,166 @@
 [submodule "dotbot"]
 	path = dotbot
-	url = https://github.com/henworth/dotbot.git
+	url = ssh://git@github.com/henworth/dotbot.git
 	ignore = dirty
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+	url = ssh://git@github.com/VundleVim/Vundle.vim.git
 	ignore = dirty
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
+	url = ssh://git@github.com/tpope/vim-fugitive.git
 	ignore = dirty
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
+	url = ssh://git@github.com/vim-airline/vim-airline.git
 	ignore = dirty
 [submodule "vim/bundle/vim-airline-themes"]
 	path = vim/bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
+	url = ssh://git@github.com/vim-airline/vim-airline-themes.git
 	ignore = dirty
 [submodule "vim/bundle/dracula"]
 	path = vim/bundle/dracula
-	url = https://github.com/dracula/vim.git
+	url = ssh://git@github.com/dracula/vim.git
 	ignore = dirty
 [submodule "tpm"]
 	path = tpm
-	url = https://github.com/tmux-plugins/tpm
+	url = ssh://git@github.com/tmux-plugins/tpm
 	ignore = dirty
 [submodule "nord-dircolors"]
 	path = nord-dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors
+	url = ssh://git@github.com/arcticicestudio/nord-dircolors
 	ignore = dirty
 [submodule "vim/bundle/nord-vim"]
 	path = vim/bundle/nord-vim
-	url = https://github.com/arcticicestudio/nord-vim
+	url = ssh://git@github.com/arcticicestudio/nord-vim
 	ignore = dirty
 [submodule "tmux/plugins/tmux-continuum"]
 	path = tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum
+	url = ssh://git@github.com/tmux-plugins/tmux-continuum
 	ignore = dirty
 [submodule "tmux/plugins/tmux-resurrect"]
 	path = tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect.git
+	url = ssh://git@github.com/tmux-plugins/tmux-resurrect.git
 	ignore = dirty
 [submodule "tmux/plugins/tmux-sensible"]
 	path = tmux/plugins/tmux-sensible
-	url = https://github.com/tmux-plugins/tmux-sensible.git
+	url = ssh://git@github.com/tmux-plugins/tmux-sensible.git
 	ignore = dirty
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
+	url = ssh://git@github.com/tmux-plugins/tpm.git
 	ignore = dirty
 [submodule "tmux/plugins/tmux-yank"]
 	path = tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank.git
+	url = ssh://git@github.com/tmux-plugins/tmux-yank.git
 	ignore = dirty
 [submodule "tmux/plugins/nord-tmux"]
 	path = tmux/plugins/nord-tmux
-	url = https://github.com/arcticicestudio/nord-tmux.git
+	url = ssh://git@github.com/arcticicestudio/nord-tmux.git
 [submodule "tmux/plugins/tmux-prefix-highlight"]
 	path = tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
+	url = ssh://git@github.com/tmux-plugins/tmux-prefix-highlight.git
 [submodule "dotbot-template"]
 	path = dotbot-plugins/dotbot-template
-	url = https://github.com/ssbanerje/dotbot-template.git
+	url = ssh://git@github.com/ssbanerje/dotbot-template.git
 [submodule "dotbot-plugins/dotbot-apt"]
 	path = dotbot-plugins/dotbot-apt
-	url = https://github.com/bryant1410/dotbot-apt.git
+	url = ssh://git@github.com/bryant1410/dotbot-apt.git
     ignore = dirty
 [submodule "dotbot-plugins/dotbot-template"]
 	path = dotbot-plugins/dotbot-template
-	url = https://github.com/ssbanerje/dotbot-template.git
+	url = ssh://git@github.com/ssbanerje/dotbot-template.git
 [submodule "nord-gnome-terminal"]
 	path = nord-gnome-terminal
-	url = https://github.com/arcticicestudio/nord-gnome-terminal.git
+	url = ssh://git@github.com/arcticicestudio/nord-gnome-terminal.git
 [submodule "dotbot-plugins/dotbot-brew"]
 	path = dotbot-plugins/dotbot-brew
-	url = https://github.com/d12frosted/dotbot-brew.git
+	url = ssh://git@github.com:henworth/dotbot-brew.git
 [submodule "dotbot-plugins/dotbot-sudo"]
 	path = dotbot-plugins/dotbot-sudo
-	url = https://github.com/DrDynamic/dotbot-sudo.git
+	url = ssh://git@github.com/DrDynamic/dotbot-sudo.git
 [submodule "vim/plugged/vim/plugged/bufferline.nvim"]
 	path = vim/plugged/vim/plugged/bufferline.nvim
-	url = https://github.com/akinsho/bufferline.nvim.git
+	url = ssh://git@github.com/akinsho/bufferline.nvim.git
 [submodule "vim/plugged/bufferline.nvim"]
 	path = vim/plugged/bufferline.nvim
-	url = https://github.com/akinsho/bufferline.nvim.git
+	url = ssh://git@github.com/akinsho/bufferline.nvim.git
 [submodule "vim/bufferline.nvim"]
 	path = vim/bufferline.nvim
-	url = https://github.com/akinsho/bufferline.nvim.git
+	url = ssh://git@github.com/akinsho/bufferline.nvim.git
 [submodule "vim/gitsigns.nvim"]
 	path = vim/gitsigns.nvim
-	url = https://github.com/nvim-lualine/lualine.nvim.git
+	url = ssh://git@github.com/nvim-lualine/lualine.nvim.git
 [submodule "vim/lualine.nvim"]
 	path = vim/lualine.nvim
-	url = https://github.com/nvim-lualine/lualine.nvim.git
+	url = ssh://git@github.com/nvim-lualine/lualine.nvim.git
 [submodule "vim/nerdtree"]
 	path = vim/nerdtree
-	url = https://github.com/preservim/nerdtree.git
+	url = ssh://git@github.com/preservim/nerdtree.git
 [submodule "vim/nerdtree-git-plugin"]
 	path = vim/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+	url = ssh://git@github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule "vim/nord.nvim"]
 	path = vim/nord.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
+	url = ssh://git@github.com/nvim-lua/plenary.nvim.git
 [submodule "vim/nvim-treesitter"]
 	path = vim/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+	url = ssh://git@github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "vim/nvim-web-devicons"]
 	path = vim/nvim-web-devicons
-	url = https://github.com/ryanoasis/vim-devicons.git
+	url = ssh://git@github.com/ryanoasis/vim-devicons.git
 [submodule "vim/plenary.nvim"]
 	path = vim/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
+	url = ssh://git@github.com/nvim-lua/plenary.nvim.git
 [submodule "vim/vim-devicons"]
 	path = vim/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons.git
+	url = ssh://git@github.com/ryanoasis/vim-devicons.git
 [submodule "vim/vim-plug-auto-install"]
 	path = vim/vim-plug-auto-install
-	url = https://github.com/ReallySnazzy/vim-plug-auto-install.git
+	url = ssh://git@github.com/ReallySnazzy/vim-plug-auto-install.git
 [submodule "vim/plugged/editorconfig-vim"]
 	path = vim/plugged/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
+	url = ssh://git@github.com/editorconfig/editorconfig-vim.git
 [submodule "vim/plugged/gitsigns.nvim"]
 	path = vim/plugged/gitsigns.nvim
-	url = https://github.com/lewis6991/gitsigns.nvim.git
+	url = ssh://git@github.com/lewis6991/gitsigns.nvim.git
 [submodule "vim/plugged/lualine.nvim"]
 	path = vim/plugged/lualine.nvim
-	url = https://github.com/nvim-lualine/lualine.nvim.git
+	url = ssh://git@github.com/nvim-lualine/lualine.nvim.git
 [submodule "vim/plugged/nerdtree"]
 	path = vim/plugged/nerdtree
-	url = https://github.com/preservim/nerdtree.git
+	url = ssh://git@github.com/preservim/nerdtree.git
 [submodule "vim/plugged/nerdtree-git-plugin"]
 	path = vim/plugged/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+	url = ssh://git@github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule "vim/plugged/nord.nvim"]
 	path = vim/plugged/nord.nvim
-	url = https://github.com/shaunsingh/nord.nvim.git
+	url = ssh://git@github.com/shaunsingh/nord.nvim.git
 [submodule "vim/plugged/nvim-treesitter"]
 	path = vim/plugged/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+	url = ssh://git@github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "vim/plugged/nvim-web-devicons"]
 	path = vim/plugged/nvim-web-devicons
-	url = https://github.com/kyazdani42/nvim-web-devicons.git
+	url = ssh://git@github.com/kyazdani42/nvim-web-devicons.git
 [submodule "vim/plugged/plenary.nvim"]
 	path = vim/plugged/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
+	url = ssh://git@github.com/nvim-lua/plenary.nvim.git
 [submodule "vim/plugged/vim-devicons"]
 	path = vim/plugged/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons.git
+	url = ssh://git@github.com/ryanoasis/vim-devicons.git
 [submodule "vim/plugged/vim-plug-auto-install"]
 	path = vim/plugged/vim-plug-auto-install
-	url = https://github.com/ReallySnazzy/vim-plug-auto-install.git
+	url = ssh://git@github.com/ReallySnazzy/vim-plug-auto-install.git
 [submodule "dotbot-plugins/dotbot-omnipkg"]
 	path = dotbot-plugins/dotbot-omnipkg
-	url = https://github.com/code-maniac/dotbot-omnipkg
+	url = ssh://git@github.com/code-maniac/dotbot-omnipkg
 [submodule "zplug"]
 	path = zplug
-	url = https://github.com/zplug/zplug.git
+	url = ssh://git@github.com/zplug/zplug.git
 	ignore = dirty
+[submodule "dotbot-plugins/dotbot-sync"]
+	path = dotbot-plugins/dotbot-sync
+	url = ssh://git@github.com:henworth/dotbot-sync.git
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = ssh://git@github.com/ycm-core/YouCompleteMe.git

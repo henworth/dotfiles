@@ -1,23 +1,20 @@
 - plugins:
     - dotbot-plugins/dotbot-omnipkg
     - dotbot-plugins/dotbot-template
-    - dotbot-plugins/dotbot-sudo
 
 - omnipkg:
     - install:
         - zsh
 
-- sudo:
-    - shell:
-        - command: chsh -s /bin/zsh
-          stdin: true
-          description: Changing shell to zsh
-
-- template:
-    - ~/.gitconfig:
-        source_file: gitconfig
-        params:
-          EMAIL: henworth@henabytes.com
-          GITHUB_USERNAME: henworth
-          SIGNING_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmJqnbZWv1mVs4otkm2NiSVeja44zBS/smKtQBsK67I
-          CREDENTIAL_HELPER: cache --timeout 36000
+- shell:
+    - command: chsh -s $(which zsh)
+      stdin: true
+      description: Changing shell to zsh
+# - template:
+#     - ~/.gitconfig:
+#         source_file: gitconfig
+#         params:
+#           EMAIL: henworth@henabytes.com
+#           GITHUB_USERNAME: henworth
+#           SIGNING_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmJqnbZWv1mVs4otkm2NiSVeja44zBS/smKtQBsK67I
+#           CREDENTIAL_HELPER: cache --timeout 36000

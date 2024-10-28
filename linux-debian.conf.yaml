@@ -1,13 +1,13 @@
-- plugins:
-    - dotbot-plugins/dotbot-apt
-    - dotbot-plugins/dotbot-sudo
+# - plugins:
+#     - dotbot-plugins/dotbot-apt
+#     - dotbot-plugins/dotbot-sudo
 
-- sudo:
-    - apt:
-        - dconf-cli
+# - sudo:
+#     - apt:
+#         - dconf-cli
 
-- shell:
-    - [
-        if command -v dconf 2>&1 >/dev/null; then cat gterminal.conf | dconf load /org/gnome/terminal/; fi,
-        Updating gnome terminal settings,
-      ]
+# - shell:
+#     - [
+#         if command -v dconf 2>&1 >/dev/null; then cat gterminal.conf | dconf load /org/gnome/terminal/; fi,
+#         Updating gnome terminal settings,
+#       ]

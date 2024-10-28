@@ -4,5 +4,6 @@ Brewfile.lock.json
 vim/.*
 gnupg/*
 __pycache__/*
+.DS_Store
 
 !gnupg/gpg-agent.conf

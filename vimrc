@@ -18,6 +18,8 @@ Plugin 'tpope/vim-fugitive', {'pinned': 1}
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'arcticicestudio/nord-vim'
+Plugin 'kaicataldo/material.vim'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -48,5 +50,12 @@ filetype plugin indent on    " required
 let g:airline_powerline_fonts = 1
 set backspace=indent,eol,start
 
-colorscheme nord
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+let g:material_theme_style = 'palenight'
+let g:material_terminal_italics = 1
+
+colorscheme material
+set rtp+=/opt/homebrew/opt/fzf

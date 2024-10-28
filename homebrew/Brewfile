@@ -1,4 +1,4 @@
-tap "warrensbox/tap"
+tap "weaveworks/tap"
 
 # Packages
 brew "bat"
@@ -22,20 +22,15 @@ brew "xz"
 brew "z"
 # brew "source-highlight"
 # brew "pandoc"
-# brew "azure-cli"
 
-# awscli and dependencies
-#
 # Official Amazon AWS command-line interface
 brew "awscli"
 
 # Integrated shell for working with the AWS CLI
 brew "aws-shell"
 
-# Lightweight and flexible command-line JSON processor
-
 # Utility for easily assuming AWS IAM roles from the command-line
-brew "awsume"
+brew "aws-vault"
 
 # Tool to generate documentation from Terraform modules
 brew "terraform-docs"
@@ -49,14 +44,5 @@ brew "pre-commit"
 # Prevent cloud misconfigurations during build-time for IaC tools
 brew "checkov"
 
-#
-## Terragrunt version manager written in Go
-## https://github.com/warrensbox/tgswitch
-#
-# brew "tgswitch"
-
-#
-## Terraform version manager written in Go
-## https://github.com/warrensbox/terraform-switcher
-#
-brew "tfswitch"
+# Terraform version manager
+brew "tfenv"

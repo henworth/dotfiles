@@ -1,40 +1,55 @@
 - plugins:
     - dotbot-plugins/dotbot-brew
     - dotbot-plugins/dotbot-template
+    - dotbot-plugins/dotbot-sync
+
+- defaults:
+    sync:
+      rsync: /opt/homebrew/bin/rsync
 
 - create:
+    - ~/.1password
     - ~/.iterm2/bin
+    - ~/.config/nvim
 
 - link:
+    ~/.1password/agent.sock: ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
     ~/.iterm2/config: iterm2/config
     ~/.iterm2_shell_integration.zsh: iterm2/shell_integration.zsh
+    ~/.config/nvim/init.vim: vimrc
 
 - shell:
     - command: sh iterm2/install_utilities.sh
       description: Install iTerm2 utilities
-      stdout: true
-      stderr: true
 
 - brew:
     - coreutils
     - git
+    - gpg
     - htop
+    - rsync
     - tmux
     - tree
     - wget
 
-- brewfile:
-    - homebrew/Brewfile
-
 - cask:
     - 1password
+    - 1password-cli
     - alfred
+    - aws-vault
     - bartender
     - discord
+    - firefox
     - istat-menus
     - iterm2
     - obsidian
     - rectangle
-    - slack
     - sourcetree
-    - zoom
+    - topnotch
+    - visual-studio-code
+
+- sync:
+    ~/Library/Fonts/MesloLGS NF Regular.ttf: fonts/MesloLGS NF Regular.ttf
+    ~/Library/Fonts/MesloLGS NF Bold.ttf: fonts/MesloLGS NF Bold.ttf
+    ~/Library/Fonts/MesloLGS NF Italic.ttf: fonts/MesloLGS NF Italic.ttf
+    ~/Library/Fonts/MesloLGS NF Bold Italic.ttf: fonts/MesloLGS NF Bold Italic.ttf
