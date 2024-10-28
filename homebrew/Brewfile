@@ -1,7 +1,6 @@
-tap "weaveworks/tap"
-
 # Packages
 brew "bat"
+brew "direnv"
 brew "fd"
 brew "flux"
 brew "git-delta"
@@ -12,16 +11,16 @@ brew "kubeseal"
 brew "jq"
 brew "ncurses"
 brew "neovim"
+brew "oh-my-posh"
 brew "tree-sitter"
 brew "vivid"
-brew "exa"
+brew "eza"
 brew "fzf"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "xz"
 brew "z"
-# brew "source-highlight"
-# brew "pandoc"
+brew "zoxide"
 
 # Official Amazon AWS command-line interface
 brew "awscli"
@@ -40,9 +39,6 @@ brew "tflint"
 
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
-
-# Prevent cloud misconfigurations during build-time for IaC tools
-brew "checkov"
 
 # Terraform version manager
 brew "tfenv"

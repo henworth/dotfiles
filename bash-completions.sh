@@ -1,7 +1,7 @@
 #!/opt/homebrew/bin/bash
 if command -v tfenv >/dev/null; then
     export TFENV_CONFIG_DIR=${HOME}/.tfenv
-    [[ -e ${TFENV_CONFIG_DIR}/use-gnupg ]] || touch ${TFENV_CONFIG_DIR}/use-gnupg
+    [[ -e "${TFENV_CONFIG_DIR}/use-gnupg" ]] || touch "${TFENV_CONFIG_DIR}/use-gnupg"
 
     function __complete_tfenv {
 
@@ -11,7 +11,7 @@ if command -v tfenv >/dev/null; then
         COMPREPLY=()
 
         case $PREV_CMD in
-            $CMD)
+            "$CMD")
                 SUPPORTED_CMDS=($(tfenv -h | gsed -En '/^Commands/,$ {s/ +([-a-z]+) +.+/\1/p}'))
                 compopt -o nosort
                 COMPREPLY=($(compgen -W "${SUPPORTED_CMDS[*]}" -- "$COMP"))

@@ -33,9 +33,9 @@
 
 - template:
     - ~/.gitconfig:
-        source_file: gitconfig
-        params:
-          EMAIL: henworth@henabytes.com
-          GITHUB_USERNAME: henworth
-          SIGNING_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmJqnbZWv1mVs4otkm2NiSVeja44zBS/smKtQBsK67I
-          CREDENTIAL_HELPER: cache --timeout 36000
+      source_file: gitconfig
+      params:
+        EMAIL: henworth@henabytes.com
+        GITHUB_USERNAME: henworth
+        SIGNING_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmJqnbZWv1mVs4otkm2NiSVeja44zBS/smKtQBsK67I
+        CREDENTIAL_HELPER: cache --timeout 36000

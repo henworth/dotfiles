@@ -1,101 +1,102 @@
-source ${HOME}/.zplug/init.zsh
+# shellcheck disable=all
 
-PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:${PATH}"
+eval "$(oh-my-posh init zsh --config "${HOME}/.oh-my-posh/zen.toml")"
+
+# PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:${PATH}"
 if [[ `uname` == "Darwin" ]]; then
     homebrew_path="/usr/local"
     if [[ `uname -m` == "arm64" ]]; then
         homebrew_path="/opt/homebrew"
     fi
-    PATH="${homebrew_path}/opt/gnu-sed/libexec/gnubin:$PATH"
+    # PATH="${homebrew_path}/opt/gnu-sed/libexec/gnubin:$PATH"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ `uname` == "Linux" ]]; then
     homebrew_path="/home/linuxbrew/.linuxbrew"
 fi
-eval "$(${homebrew_path}/bin/brew shellenv)"
 
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "${homebrew_path}/share/zsh", from:local
-
-ohmyzsh_plugins=(
-    git
-    kubectl
-    docker
-    terraform
-    pip
-    python
-    brew
-    golang
-    direnv
-    aws
-)
-for plugin ($ohmyzsh_plugins); do
-    zplug "plugins/${plugin}", from:oh-my-zsh
-done
-
-prezto_plugins=(
-    history
-    command-not-found
-)
-for plugin ($prezto_plugins); do
-    zplug "modules/${plugin}", from:prezto
-done
-
-# If the defer tag is given 2 or above, run after compinit command
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+# Download Zinit, if it's not there yet
+if [ ! -d "${ZINIT_HOME}" ]; then
+  mkdir -p "$(dirname "${ZINIT_HOME}")"
+  git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
 fi
 
-zplug load
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-# autoload -Uz +X bashcompinit && bashcompinit
+# Add zsh plugins
+zsh_plugins=(
+  Aloxaf/fzf-tab
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+)
+for plugin ($zsh_plugins); do
+  zinit light ${plugin}
+done
 
-# source ${HOME}/.bash-completions.sh
-source ${HOME}/.keybindings.zsh
-source ${HOME}/.fzf.zsh
-source ${HOME}/.p10k.zsh
+# Add oh my zsh snippets
+ohmyzsh_snippets=(
+  git
+  sudo
+  kubectl
+  docker
+  terraform
+  pip
+  python
+  brew
+  golang
+  direnv
+  aws
+  command-not-found
+  archlinux
+)
+for snippet ($ohmyzsh_snippets); do
+  zinit snippet OMZP::${snippet} &>/dev/null
+done
 
-[[ $(uname -r) == *"WSL2"* ]] && source ${HOME}/.ssh-agent-bridge.sh
+zinit snippet OMZL::clipboard.zsh
+# zinit snippet OMZL::termsupport.zsh
 
-(( ! ${+functions[p10k]} )) || p10k finalize
+command -v brew >/dev/null && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-export BAT_THEME=Nord
-export EDITOR="nvim"
-export ENHANCD_DISABLE_HOME=1
-export ENHANCD_FILTER=fzf-tmux
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_DEFAULT_COMMAND="fd --type file"
-# export HOMEBREW_GITHUB_API_TOKEN=$(op item get "GitHub PAT - Homebrew" --fields credential)
-export LS_COLORS="$(vivid generate nord)"
-export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-export PYENV_ROOT="${HOME}/.pyenv"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH="${PYENV_ROOT}/bin:/opt/homebrew/opt/libpq/bin:${PATH}"
+# Load completions
+autoload -Uz compinit && compinit
 
-if command -v pyenv >/dev/null; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+zinit cdreplay -q
 
-command -v aws-vault >/dev/null && eval "$(aws-vault --completion-script-zsh)"
-command -v trivy >/dev/null && eval "$(trivy completion zsh)"
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
 
-function gen_rand() {
-  length=24
-  if [ ! -z $1 ]; then
-    length=$1
-  fi
-  LC_ALL=C tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $length ; echo -n
-}
+# History
+HISTSIZE=5000
+HISTFILE="${HOME}/.zsh_history"
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completions
+eval "$(oh-my-posh completion zsh)"
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 function find_backend_file() {
   local root="${PWD}"
@@ -114,23 +115,41 @@ function find_backend_file() {
   return 1
 }
 
+function gen_rand() {
+  length=24
+  if [ ! -z $1 ]; then
+    length=$1
+  fi
+  LC_ALL=C tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c $length ; echo -n
+}
+
+# Aliases
 alias cat="bat"
 alias ls="eza --git --group-directories-first"
 alias l="ls -blF"
 alias la="ls -abghilmu"
 alias less="bat"
 alias ll="ls -al"
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias tfi="terraform init"
 alias tree="eza --tree"
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias tfi="terraform init -backend-config=$(find_backend_file)"
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
+
+if command -v pyenv >/dev/null; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# command -v aws-vault >/dev/null && eval "$(aws-vault --completion-script-zsh)"
+# command -v trivy >/dev/null && eval "$(trivy completion zsh)"
 
 source "${HOME}/.config/op/plugins.sh"
-
-export NVM_DIR="${HOME}/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-[[ -s "${HOME}/.gvm/scripts/gvm" ]] && source "${HOME}/.gvm/scripts/gvm"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH:/Users/mike/.local/bin"
+eval "$(direnv hook zsh)"
